@@ -10,18 +10,24 @@ import {
   InternshipSpots,
   InternshipDescription,
   InternshipLocation,
+  InternshipActions
 } from "./Internship.styled";
 import Text from "../../UIElements/Typography/Text";
-const Internship = ({
-  title,
-  location,
-  type,
-  company,
-  skills,
-  startingDate,
-  spots,
-  description,
-}) => {
+import { StyledMediumButton } from '../../UIElements/Buttons/Button.styled';
+const Internship = (
+  {
+    id,
+    title,
+    location,
+    type,
+    company,
+    skills,
+    startingDate,
+    spots,
+    description,
+    duration
+  },
+) => {
   return (
     <InternshipContainer>
       <InternshipTitle>
@@ -53,7 +59,9 @@ const Internship = ({
       </InternshipCompany>
       <InternshipKnowledge>
         {skills.map((skill) => (
-          <Text key={skill.skill} type="text">{skill.skill}</Text>
+          <Text key={skill.skill} type="text">
+            {skill.skill}
+          </Text>
         ))}
       </InternshipKnowledge>
       <InternshipDate>
@@ -63,7 +71,7 @@ const Internship = ({
           margin="1rem"
         >{`Incepe pe: ${startingDate}`}</Text>{" "}
         <Text type="text" bold="true" margin="1rem">
-          Durata de desfasurare: 90 de zile
+          {`Durata de desfasurare: ${duration}`}
         </Text>{" "}
       </InternshipDate>
       <InternshipSpots>
@@ -78,6 +86,11 @@ const Internship = ({
           {description}
         </Text>{" "}
       </InternshipDescription>
+      <InternshipActions>
+      <StyledMediumButton >Aplica</StyledMediumButton>
+      </InternshipActions>
+     
+    
     </InternshipContainer>
   );
 };

@@ -2,17 +2,17 @@ import styled from 'styled-components';
 
 
 export const InternshipContainer = styled.div`
-min-height: 100%;
-max-width: 100%;
-/* max-width: 40rem; */
-margin: 0 auto;
+min-height: 15rem;
+max-width: 80rem;
 padding: 1rem;
 border: 2px solid #3f3f3f;
 border-radius: 15px;
+margin-bottom: 3rem;
 `
 export const InternshipTitle = styled.div`
 display: flex;
 justify-content: center;
+
 `
 
 export const InternshipInfo = styled.div`
@@ -48,3 +48,9 @@ export const InternshipKnowledge = styled.div`
  justify-content:center;
  align-items:center;
  `
+
+export const InternshipActions = styled.div`
+width: 100%;
+margin: 1rem 0;
+text-align: center;
+`

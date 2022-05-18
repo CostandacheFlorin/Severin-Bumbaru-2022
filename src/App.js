@@ -5,23 +5,27 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import MainNavigation from "./components/Navigation/MainNavigation/MainNavigation";
 import Internship from "./components/Internship/Internship/Internship";
-
-const skills = [{ skill: "java" }, { skill: "oop" }, { skill: "ceva" }];
-
+import InternshipRequests from "./pages/new-internship-requests/InternshipRequests";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
 function App() {
   return (
     <>
       <MainNavigation />
-      <Internship
-        description={"testststsetsetests"}
-        startingDate="23 decembrie"
-        spots={40}
-        type="remote"
-        location="bucuresti"
-        skills={skills}
-        company="companie"
-        title="Firma"
-      />
+
+      <Switch>
+        <Route path="/stagii" exact>
+          <InternshipRequests />
+        </Route>
+
+        <Route path="/autentificare" exact>
+          <Login />
+        </Route>
+
+        <Route path="/inregistrare" exact>
+          <Register />
+        </Route>
+      </Switch>
 
       <Footer />
     </>
