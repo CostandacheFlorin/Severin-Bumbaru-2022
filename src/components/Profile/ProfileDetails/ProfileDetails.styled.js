@@ -15,7 +15,7 @@ margin-top: 2rem;
 
 export const StyledProfileData = styled.div`
 display: grid;
-grid-template-columns: 5rem 1fr;
+grid-template-columns: 8rem 1fr;
 margin-bottom: 1rem;
 
 
@@ -23,4 +23,14 @@ margin-bottom: 1rem;
 export const StyledProfileActionsArea = styled.div`
 width: 100%;
 text-align: center;
+`
+
+export const StyledProfileHeader = styled.div`
+`
+
+export const StyledProfileImage = styled.div`
+    margin: 3rem;
+    & img {
+        width: 10rem;
+    }
 `

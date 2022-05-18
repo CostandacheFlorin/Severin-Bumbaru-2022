@@ -15,11 +15,17 @@ export const StyledFormContainer = styled.form`
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 15px;
+ 
 `;
 
 export const StyledLoginOptions = styled.div`
   display: flex;
   justify-content: space-around;
+
+  & a {
+      text-decoration: none;
+  }
+  
 `;
 
 

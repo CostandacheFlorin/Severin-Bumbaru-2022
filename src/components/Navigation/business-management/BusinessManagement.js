@@ -8,7 +8,7 @@ import {
 
 const BusinessManagement = () => {
   return (
-    <StyledBusinessInfo to="/management-firme">
+    <StyledBusinessInfo to="/gestionare-firme">
       <StyledBusinessIcon>
         <BusinessIcon />
       </StyledBusinessIcon>

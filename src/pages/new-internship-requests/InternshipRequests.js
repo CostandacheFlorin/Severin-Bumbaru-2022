@@ -1,8 +1,9 @@
 import React from "react";
 
 import InternshipList from "../../components/Internship/InternshipList/InternshipList";
-import { StyledInternshipRequestsLayout } from "./InternshipRequests.styled";
+import { StyledInternshipRequestsLayout, StyledFilteredArea } from "./InternshipRequests.styled";
 import FilterCheckboxes from "../../components/UIElements/FilterCheckboxes/FilterCheckboxes";
+import FilterByCity from "../../components/UIElements/FilterByCity/FilterByCity";
 const DUMMY_INTERSHIPS = [
   {
     id: "id1",
@@ -55,15 +56,17 @@ const DUMMY_INTERSHIPS = [
 ];
 
 const InternshipRequests = () => {
-
-// bag state-ul cu internship-urile filtrate ca si prop
-// schimb state in functie de on change sau cv vad
-//eventual mut toate checkbox-urile aici
-
+  // bag state-ul cu internship-urile filtrate ca si prop
+  // schimb state in functie de on change sau cv vad
+  //eventual mut toate checkbox-urile aici
 
   return (
     <StyledInternshipRequestsLayout>
+      <StyledFilteredArea>
         <FilterCheckboxes />
+        <FilterByCity/>
+      </StyledFilteredArea>
+
       <InternshipList internships={DUMMY_INTERSHIPS} />
     </StyledInternshipRequestsLayout>
   );

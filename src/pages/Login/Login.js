@@ -17,11 +17,50 @@ import Text from "../../components/UIElements/Typography/Text";
 import ErrorModal from "../../components/UIElements/ErrorModal/ErrorModal";
 import LoadingSpinner from "../../components/UIElements/Loading/LoadingSpinner";
 // trb facuta functie la form sa adauge la inputuri error
+import { useHttpClient } from "../../hooks/http-hook";
+import { AuthContext } from "../../context/auth-context";
 
 const Login = () => {
  
+    const auth = useContext(AuthContext);
+    const [inputError, setInputError] = useState(false);
+    const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
-    const handleSubmit = () => {
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        const username = data.get("username");
+        const password = data.get("password");
+        if (username.trim() === "" || password.trim() === "") {
+          setInputError(true);
+        }
+    
+        console.log({
+          email: data.get("username"),
+          password: data.get("password"),
+        });
+    
+        try {
+          const responseData = await sendRequest(
+            "http://10.13.16.76:8080/login",
+            "POST",
+            JSON.stringify({
+              username: username,
+              password: password,
+            }),
+            {
+              "Content-Type": "application/json",
+            }
+          );
+          console.log(responseData);
+          auth.login(responseData.id, responseData.role);
+          console.log(auth.isLoggedIn);
+          console.log(auth.permission);
+          
+        ;
+          
+    
+        } catch (err) {}
 
     }
 
@@ -62,7 +101,7 @@ const Login = () => {
         />
 
       
-        <StyledMediumButton>Autentificare</StyledMediumButton>
+        <StyledMediumButton margin="1rem auto" >Autentificare</StyledMediumButton>
 
         <StyledLoginOptions>
           <Link to="/uitare-parola">

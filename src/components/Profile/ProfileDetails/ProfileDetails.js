@@ -7,17 +7,17 @@ import {
   StyledProfileDetailsInfo,
   StyledProfileData,
   StyledProfileActionsArea,
+  StyledProfileHeader,
+  StyledProfileImage
 } from "./ProfileDetails.styled";
 
-const ProfileDetails = ({name, email, phone, address}) => {
-    const history = useHistory();
+import Picture from "../../UIElements/Image/Picture";
+const ProfileDetails = ({ name, email, phone, address, image, skills, teacher, university }) => {
+  const history = useHistory();
 
-
-    const navigateToProfileDetails = () => {
-        history.push("/modifica-date")
-    }
-
-
+  const navigateToProfileDetails = () => {
+    history.push("/modifica-date");
+  };
 
   return (
     <StyledProfileDetails>
@@ -25,6 +25,14 @@ const ProfileDetails = ({name, email, phone, address}) => {
         Datele contului dumneavoastra
       </Text>
       <StyledProfileDetailsInfo>
+      <StyledProfileImage>
+      <Picture image={image} />
+
+
+      </StyledProfileImage>
+
+
+
         <StyledProfileData>
           <Text type="text" bold="true">
             {" "}
@@ -56,9 +64,38 @@ const ProfileDetails = ({name, email, phone, address}) => {
           </Text>
           <Text type="text"> {address}</Text>
         </StyledProfileData>
+
+  
+
+        <StyledProfileData>
+          <Text type="text" bold="true">
+            {" "}
+            Facultate:
+          </Text>
+          <Text type="text"> {university}</Text>
+        </StyledProfileData>
+
+        <StyledProfileData>
+          <Text type="text" bold="true">
+            {" "}
+            Abilitati:
+          </Text>
+          <Text type="text"> {skills}</Text>
+        </StyledProfileData>
+
+        <StyledProfileData>
+          <Text type="text" bold="true">
+            {" "}
+            Profesor indrumator:
+          </Text>
+          <Text type="text"> {teacher}</Text>
+        </StyledProfileData>
+
       </StyledProfileDetailsInfo>
       <StyledProfileActionsArea>
-        <StyledMediumButton onClick={navigateToProfileDetails}>Modifica datele </StyledMediumButton>
+        <StyledMediumButton onClick={navigateToProfileDetails}>
+          Modifica datele{" "}
+        </StyledMediumButton>
       </StyledProfileActionsArea>
     </StyledProfileDetails>
   );

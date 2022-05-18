@@ -1,6 +1,5 @@
 
 
-import defaultImage from '../../../img/nomed.jpg';
 
 
 const Image = ({image, style, classname}) => {
@@ -11,7 +10,7 @@ const Image = ({image, style, classname}) => {
 }
 
 Image.defaultProps= {
-    image: defaultImage,
+    image: null,
     style: {}
 }
 

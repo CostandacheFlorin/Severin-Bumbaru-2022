@@ -14,3 +14,6 @@ grid-gap: 2rem;
 }
 
 `
+
+export const StyledFilteredArea = styled.div`
+`

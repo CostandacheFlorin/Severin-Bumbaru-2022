@@ -1,4 +1,4 @@
-import defaultImage from '../../../img/nomed.jpg';
+import defaultImage from '../../../img/randomdude.jpg';
 
 
 

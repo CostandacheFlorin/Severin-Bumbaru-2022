@@ -8,7 +8,7 @@ import {
 
 const SearchInternship = () => {
   return (
-    <StyledSearchInternshipInfo to="/cautare-stagii">
+    <StyledSearchInternshipInfo to="/stagii">
       <StyledSearchInternshipIcon>
         <ContentPasteSearchIcon/>
       </StyledSearchInternshipIcon>

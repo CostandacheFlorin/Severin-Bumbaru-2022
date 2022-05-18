@@ -91,3 +91,19 @@ export const StyledIconButton = styled(StyledMediumButton)`
 export const RoundedCornersButton = styled(StyledMediumButton)`
   border-radius: 20px;
 `;
+
+
+export const RedMediumButton = styled(StyledMediumButton)`
+  background-image: linear-gradient(-180deg, #ED213A, #93291E);
+  &:hover {
+  background-color: #ff3234;
+  }
+`
+
+export const BlueButton = styled(StyledMediumButton)`
+  background-image: linear-gradient(-180deg, #004abf, #004abf);
+  
+  &:hover {
+    background-color: #3fc1ff;
+  }
+`

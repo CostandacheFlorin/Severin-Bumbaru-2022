@@ -16,4 +16,12 @@ margin-top: 2rem;`;
 
 export const StyledFilterOptions = styled.div`
   margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 3rem;
 `;
+
+
+export const StyledFilterRemote = styled.div`
+`
