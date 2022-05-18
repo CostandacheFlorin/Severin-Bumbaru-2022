@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+
+import { Route, Switch, Redirect } from "react-router-dom";
+import Footer from "./components/Footer/Footer";
+import MainNavigation from "./components/Navigation/MainNavigation/MainNavigation";
+import Internship from "./components/Internship/Internship/Internship";
+
+const skills = [{ skill: "java" }, { skill: "oop" }, { skill: "ceva" }];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <MainNavigation />
+      <Internship
+        description={"testststsetsetests"}
+        startingDate="23 decembrie"
+        spots={40}
+        type="remote"
+        location="bucuresti"
+        skills={skills}
+        company="companie"
+        title="Firma"
+      />
+
+      <Footer />
+    </>
   );
 }
 
