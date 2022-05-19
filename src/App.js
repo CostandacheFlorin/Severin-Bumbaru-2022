@@ -24,6 +24,7 @@ import InternshipFormPage from "./pages/InternshipForm/InternshipFormPage";
 import BusinessProfile from "./components/Profile/BusinessProfile/BusinessProfile";
 import BusinessProfilePage from "./pages/BusinessProfilePage/BusinessProfilePage";
 import InternshipHistory from "./components/Internship/InternshipHistory/InternshipHistory";
+import RequestCard from "./components/Tutor/RequestCard/RequestCard";
 function App() {
   const { permission, login, logout, userId } = useAuth();
   const auth = useContext(AuthContext);
@@ -102,6 +103,10 @@ function App() {
             <InternshipHistory internshipStatus="acceptat" />
             <InternshipHistory internshipStatus="refuzat" />
             <InternshipHistory internshipStatus="in asteptare" />
+          </Route>
+
+          <Route path="/test2" exact>
+            <RequestCard/>
           </Route>
 
           <Redirect to="/" />

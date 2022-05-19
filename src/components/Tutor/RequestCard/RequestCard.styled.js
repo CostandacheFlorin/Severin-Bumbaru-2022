@@ -3,10 +3,12 @@ import { motion } from "framer-motion";
 
 export const RCWrapper = styled.div`
   display: grid;
-  width: 75%;
+  width: 65%;
   grid-template-columns: repeat(1, 1fr);
+  margin: 0 auto;
   margin-top: 4rem;
   grid-gap: 2rem;
+  
 
   @media screen and (max-width: 1100px) {
     grid-template-columns: repeat(1, 1fr);
@@ -118,3 +120,15 @@ export const RCFacultyName = styled.p`
     letter-spacing: 1.3px;
   }
 `;
+export const HiddenForm = styled.div`
+  display: flex;
+  flex-direction: column;
+
+`
+
+export const HiddenFormContent = styled.form`
+height: 10rem;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+`

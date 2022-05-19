@@ -1,5 +1,6 @@
-import React from "react";
-import { Container } from "../../globalStyles";
+import React, { useState } from "react";
+import { Container } from "../../../data/globalStyles";
+import { StyledMediumButton } from "../../UIElements/Buttons/Button.styled";
 import {
   RCColumn,
   RCWrapper,
@@ -9,25 +10,24 @@ import {
   RCInfoWrapper,
   RCFacultyName,
   RCInternship,
+  HiddenForm,
+  HiddenFormContent,
 } from "./RequestCard.styled";
 import { data } from "./RequestCardData";
+import TutorCard from "./TutorCard";
 
 const RequestCard = () => {
+
   return (
     <Container>
       <RCWrapper>
-        {data.map((el, index) => (
-          <RCColumn key={index}>
-            <RCInfoWrapper>
-              <RCName>{el.name}</RCName>
-              <RCFacultyName>{el.facultyName}</RCFacultyName>
-              <RCInternship>{el.internship}</RCInternship>
-            </RCInfoWrapper>
-            <RCButtonWrapper>
-              <RCName1>Modifica Nota</RCName1>
-              <RCName1>Modifica Prezente</RCName1>
-            </RCButtonWrapper>
-          </RCColumn>
+        {data.map((el) => (
+          <TutorCard
+            id={el.id}
+            name={el.name}
+            facultyName={el.facultyName}
+            internship={el.internship}
+          />
         ))}
       </RCWrapper>
     </Container>
