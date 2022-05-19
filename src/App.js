@@ -25,6 +25,7 @@ import BusinessProfile from "./components/Profile/BusinessProfile/BusinessProfil
 import BusinessProfilePage from "./pages/BusinessProfilePage/BusinessProfilePage";
 import InternshipHistory from "./components/Internship/InternshipHistory/InternshipHistory";
 import RequestCard from "./components/Tutor/RequestCard/RequestCard";
+import ProfessorCard from "./components/ProfessorCard/ProfessorCard";
 function App() {
   const { permission, login, logout, userId } = useAuth();
   const auth = useContext(AuthContext);
@@ -106,7 +107,11 @@ function App() {
           </Route>
 
           <Route path="/test2" exact>
-            <RequestCard/>
+            <RequestCard />
+          </Route>
+
+          <Route path="/test3" exact>
+            <ProfessorCard />
           </Route>
 
           <Redirect to="/" />
