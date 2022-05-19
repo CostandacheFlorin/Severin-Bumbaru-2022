@@ -1,52 +1,109 @@
-import React from 'react';
-import Text from '../Typography/Text';
+import React, { useState } from "react";
+import Text from "../Typography/Text";
 
-import {StyledFilterHeader, StyledFilterBox, StyledFilterOptions,StyledFilterRemote} from './FilterCheckboxes.styled';
-import Checkbox from '../Checkbox/Checkbox';
+import {
+  StyledFilterHeader,
+  StyledFilterBox,
+  StyledFilterOptions,
+  StyledFilterRemote,
+} from "./FilterCheckboxes.styled";
+import Checkbox from "../Checkbox/Checkbox";
 
-const FilterCheckboxes = () => {
-    return (
-        <>
-        
-        
-        <StyledFilterBox>
-            <StyledFilterHeader>
-                <Text type="text" size="large" color="#004abf" align="center">Categorie</Text>
-            </StyledFilterHeader>
-            <StyledFilterOptions>
-            <Checkbox id="test" name="test" label="Web development"/>
-            <Checkbox id="test" name="test" label="Programming"/>
-            <Checkbox id="test" name="test" label="Software testing"/>
-            <Checkbox id="test" name="test" label="Graphic Design"/>
-            <Checkbox id="test" name="test" label="Devops"/>
+const FilterCheckboxes = ({ filterBy, lista, filterByType }) => {
+  const [isChecked, setIsChecked] = useState(false);
+  const handleOnChange = () => {
+    setIsChecked(!isChecked);
+    if (isChecked) {
+      filterBy();
+      lista="ceva";
+    }
+  };
 
-            <Checkbox id="test" name="test" label="Data Science"/>
-            <Checkbox id="test" name="test" label="Database administrator"/>
-            <Checkbox id="test" name="test" label="Cyber security"/>
-            <Checkbox id="test" name="test" label="Networking"/>
-            <Checkbox id="test" name="test" label="Human resources"/>
-            </StyledFilterOptions>
+  return (
+    <>
+      <StyledFilterBox>
+        <StyledFilterHeader>
+          <Text type="text" size="large" color="#004abf" align="center">
+            Categorie
+          </Text>
+        </StyledFilterHeader>
+        <StyledFilterOptions>
+          <Checkbox
+            onChange={filterBy}
+            id="web development"
+            name="web development"
+            label="Web development"
+          />
+          <Checkbox
+            onChange={filterBy}
+            id="programming"
+            name="programming"
+            label="Programming"
+          />
+          <Checkbox
+            onChange={filterBy}
+            id="testing"
+            name="testing"
+            label="Software testing"
+          />
+          <Checkbox
+            onChange={filterBy}
+            id="graphic"
+            name="graphic"
+            label="Graphic Design"
+          />
+          <Checkbox
+            onChange={filterBy}
+            id="devops"
+            name="devops"
+            label="Devops"
+          />
 
-            <StyledFilterHeader>
-                <Text type="text" size="large" color="#004abf" align="center">Tip</Text>
-            </StyledFilterHeader>
-            <StyledFilterOptions>
-            <Checkbox  id="remote" name="remote" label="Remote"/>
-            <Checkbox  id="hibrid" name="hibrid" label="Hibrid"/>
-            <Checkbox  id="fizic" name="fizic" label="Fizic"/>
-           
-            </StyledFilterOptions>
+          <Checkbox
+            onChange={filterBy}
+            id="data"
+            name="data"
+            label="Data Science"
+          />
+          <Checkbox
+            onChange={filterBy}
+            id="database"
+            name="database"
+            label="Database administrator"
+          />
+          <Checkbox
+            onChange={filterBy}
+            id="security"
+            name="security"
+            label="Cyber security"
+          />
+          <Checkbox
+            onChange={filterBy}
+            id="networking"
+            name="networking"
+            label="Networking"
+          />
+          <Checkbox
+            onChange={filterBy}
+            id="human resources"
+            name="human resources"
+            label="Human resources"
+          />
+        </StyledFilterOptions>
 
-        </StyledFilterBox>
-
-        
-
-
-        
-        </>
-    )
-
-}
-
+        <StyledFilterHeader>
+          <Text type="text" size="large" color="#004abf" align="center">
+            Tip
+          </Text>
+        </StyledFilterHeader>
+        <StyledFilterOptions>
+          <Checkbox  onChange={filterByType}  id="remote" name="remote" label="Remote" />
+          <Checkbox  onChange={filterByType} id="hibrid" name="hibrid" label="Hibrid" />
+          <Checkbox  onChange={filterByType} id="fizic" name="fizic" label="Fizic" />
+        </StyledFilterOptions>
+      </StyledFilterBox>
+    </>
+  );
+};
 
 export default FilterCheckboxes;

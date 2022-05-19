@@ -15,61 +15,99 @@ import Profile from "./pages/Profile/Profile";
 import Business from "./components/Business/Business";
 import ManageBusinesses from "./pages/ManageBusinesses/ManageBusinesses";
 import Home from "./pages/Home/Home";
+import { useContext } from "react";
+import ProfileForm from "./components/Profile/ProfileForm/ProfileForm";
+import BusinessProfileForm from "./components/Profile/ProfileForm/BusinessProfileForm";
 
-
+import TutorFormPage from "./pages/TutorFormPage/TutorFormPage";
+import InternshipFormPage from "./pages/InternshipForm/InternshipFormPage";
+import BusinessProfile from "./components/Profile/BusinessProfile/BusinessProfile";
+import BusinessProfilePage from "./pages/BusinessProfilePage/BusinessProfilePage";
+import InternshipHistory from "./components/Internship/InternshipHistory/InternshipHistory";
 function App() {
-
   const { permission, login, logout, userId } = useAuth();
+  const auth = useContext(AuthContext);
 
   return (
     <>
-       <AuthContext.Provider  value={{
+      <AuthContext.Provider
+        value={{
           isLoggedIn: !!permission,
           permission: permission,
           userId,
           login: login,
           logout: logout,
-        }}>
+        }}
+      >
+        <MainNavigation />
 
+        <Switch>
+          <Route path="/stagii" exact>
+            <InternshipRequests />
+          </Route>
 
-       
-      <MainNavigation />
+          <Route path="/gestionare-stagii" exact>
+            <InternshipRequests />
+          </Route>
 
-      <Switch>
-        <Route path="/stagii" exact>
-          <InternshipRequests />
-        </Route>
+          <Route path="/" exact>
+            <Home />
+          </Route>
 
-        <Route path="/" exact>
-          <Home />
-        </Route>
+          <Route path="/modifica-profil" exact>
+            <ProfileForm />
+          </Route>
+          <Route path="/modifica-profil-firma" exact>
+            <BusinessProfileForm />
+          </Route>
 
-        <Route path="/autentificare" exact>
-          <Login />
-        </Route>
+          {!userId && (
+            <Route path="/autentificare" exact>
+              <Login />
+            </Route>
+          )}
 
-        <Route path="/inregistrare" exact>
-          <Register />
-        </Route>
+          {!userId && (
+            <Route path="/inregistrare" exact>
+              <Register />
+            </Route>
+          )}
 
-        <Route path="/inregistrare-firma" exact>
-          <RegisterCompany />
-        </Route>
+          <Route path="/inregistrare-firma" exact>
+            <RegisterCompany />
+          </Route>
 
-        <Route path="/profil" exact>
-          <Profile />
-        </Route>
+          <Route path="/profil" exact>
+            <Profile />
+          </Route>
 
-        <Route path="/gestionare-firme" exact>
-        <ManageBusinesses/>
-        </Route>
+          <Route path="/profil-firma" exact>
+            <BusinessProfilePage />
+          </Route>
+          <Route path="/gestionare-tutori" exact>
+            <TutorFormPage />
+          </Route>
 
+          <Route path="/adauga-stagii" exact>
+            <InternshipFormPage />
+          </Route>
 
+          <Route path="/gestionare-firme" exact>
+            <ManageBusinesses />
+          </Route>
+          <Route path="/test" exact>
+            <InternshipHistory internshipStatus="acceptat" />
+            <InternshipHistory internshipStatus="refuzat" />
+            <InternshipHistory internshipStatus="in asteptare" />
+            <InternshipHistory internshipStatus="acceptat" />
+            <InternshipHistory internshipStatus="refuzat" />
+            <InternshipHistory internshipStatus="in asteptare" />
+          </Route>
 
-        <Redirect to="/" />
-      </Switch>
+          <Redirect to="/" />
+        </Switch>
 
-      <Footer />
+        <Footer />
       </AuthContext.Provider>
     </>
   );

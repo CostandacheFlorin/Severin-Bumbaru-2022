@@ -42,7 +42,7 @@ const Register = () => {
 
     try {
         const responseData = await sendRequest(
-          "http://10.13.16.76:8080/register",
+          "http://10.13.16.154:8080/register",
           "POST",
           JSON.stringify({
             username: email,

@@ -9,37 +9,29 @@ import {
   StyledProfileActionsArea,
   StyledProfileHeader,
   StyledProfileImage
-} from "./ProfileDetails.styled";
+} from "../ProfileDetails/ProfileDetails.styled";
 
 import Picture from "../../UIElements/Image/Picture";
-const ProfileDetails = ({ name, email, phone, address, image, skills, teacher, university }) => {
+const BusinessProfile = ({ name, description, phone, address, image }) => {
   const history = useHistory();
 
   const navigateToProfileDetails = () => {
-    history.push("/modifica-profil");
+    history.push("/modifica-profil-firma");
   };
-
-
-  
 
   return (
     <StyledProfileDetails>
       <Text type="subtitle" bold="true" align="center">
-        Datele contului dumneavoastra
+        Datele companiei
       </Text>
       <StyledProfileDetailsInfo>
-      <StyledProfileImage>
-      <Picture image={image} />
-
-
-      </StyledProfileImage>
-
+    
 
 
         <StyledProfileData>
           <Text type="text" bold="true">
             {" "}
-            Nume:
+            Denumire:
           </Text>
           <Text type="text"> {name}</Text>
         </StyledProfileData>
@@ -47,9 +39,9 @@ const ProfileDetails = ({ name, email, phone, address, image, skills, teacher, u
         <StyledProfileData>
           <Text type="text" bold="true">
             {" "}
-            Email:
+            Descriere:
           </Text>
-          <Text type="text"> {email}</Text>
+          <Text type="text"> {description}</Text>
         </StyledProfileData>
 
         <StyledProfileData>
@@ -67,32 +59,16 @@ const ProfileDetails = ({ name, email, phone, address, image, skills, teacher, u
           </Text>
           <Text type="text"> {address}</Text>
         </StyledProfileData>
+        <StyledProfileImage>
+      <Picture image={image} />
+
+
+      </StyledProfileImage>
+
 
   
 
-        <StyledProfileData>
-          <Text type="text" bold="true">
-            {" "}
-            Facultate:
-          </Text>
-          <Text type="text"> {university}</Text>
-        </StyledProfileData>
-
-        <StyledProfileData>
-          <Text type="text" bold="true">
-            {" "}
-            Abilitati:
-          </Text>
-          <Text type="text"> {skills}</Text>
-        </StyledProfileData>
-
-        <StyledProfileData>
-          <Text type="text" bold="true">
-            {" "}
-            Profesor indrumator:
-          </Text>
-          <Text type="text"> {teacher}</Text>
-        </StyledProfileData>
+        
 
       </StyledProfileDetailsInfo>
       <StyledProfileActionsArea>
@@ -104,4 +80,4 @@ const ProfileDetails = ({ name, email, phone, address, image, skills, teacher, u
   );
 };
 
-export default ProfileDetails;
+export default BusinessProfile;
