@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Container } from "../../../data/globalStyles";
 import { StyledMediumButton } from "../../UIElements/Buttons/Button.styled";
 import {
   RCColumn,
@@ -13,9 +12,8 @@ import {
   HiddenForm,
   HiddenFormContent,
 } from "./RequestCard.styled";
-import { data } from "./RequestCardData";
 
-const TutorCard = ({id, name, facultyName,internship}) => {
+const TutorCard = ({ id, name, facultyName, internship }) => {
   const [showGrade, setShowGrade] = useState(false);
   const [showActivity, setShowActivity] = useState(false);
 
@@ -47,35 +45,32 @@ const TutorCard = ({id, name, facultyName,internship}) => {
         <option value="absent">Absent</option>
       </select>
       <input type="date" id="grade-date" name="grade-date" />
-      <StyledMediumButton  >Adauga </StyledMediumButton>
+      <StyledMediumButton>Adauga </StyledMediumButton>
     </HiddenFormContent>
   );
 
   return (
-      <>
-        
-          <RCColumn key={id}>
-            <RCInfoWrapper>
-              <RCName>{name}</RCName>
-              <RCFacultyName>{facultyName}</RCFacultyName>
-              <RCInternship>{internship}</RCInternship>
-            </RCInfoWrapper>
-            <RCButtonWrapper>
-              <StyledMediumButton onClick={showGrades}>
-                Modifica Nota
-              </StyledMediumButton>
-              <StyledMediumButton onClick={showActivities}>
-                Modifica Prezente
-              </StyledMediumButton>
-            </RCButtonWrapper>
-            <RCInfoWrapper>
-              {showGrade && <HiddenForm>{gradesForm}</HiddenForm>}
-              {showActivity && <HiddenForm>{activityForm}</HiddenForm>}
-            </RCInfoWrapper>
-          </RCColumn>
-        
-        </>
-    
+    <>
+      <RCColumn key={id}>
+        <RCInfoWrapper>
+          <RCName>{name}</RCName>
+          <RCFacultyName>{facultyName}</RCFacultyName>
+          <RCInternship>{internship}</RCInternship>
+        </RCInfoWrapper>
+        <RCButtonWrapper>
+          <StyledMediumButton onClick={showGrades}>
+            Modifica Nota
+          </StyledMediumButton>
+          <StyledMediumButton onClick={showActivities}>
+            Modifica Prezente
+          </StyledMediumButton>
+        </RCButtonWrapper>
+        <RCInfoWrapper>
+          {showGrade && <HiddenForm>{gradesForm}</HiddenForm>}
+          {showActivity && <HiddenForm>{activityForm}</HiddenForm>}
+        </RCInfoWrapper>
+      </RCColumn>
+    </>
   );
 };
 
