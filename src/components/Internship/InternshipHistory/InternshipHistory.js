@@ -6,51 +6,71 @@ import {
   InternshipHistoryContent,
   InternshipHistoryWrapper,
   InternshipHistoryHeader,
-  HiddenInfo
+  HiddenInfo,
 } from "./InternshipHistory.styled";
 
-const InternshipHistory = ({internshipStatus}) => {
+const InternshipHistory = ({
+  internshipStatus,
+  internshipName,
+  internshipPosition,
+  internshipDescription,
+  internshipSkills,
+  internshipStartingDate,
+  internshipDuration,
+  internshipCompany
+
+}) => {
   const [seeMore, setSeeMore] = useState(false);
   const [status, setStatus] = useState(internshipStatus);
 
   let statusColor;
 
-  if(status === "acceptat"){
-    statusColor="#00d775";
-  }else if(status ==="refuzat"){
-      statusColor ="red";
-  }else {
-      statusColor="gray";
+  if (status === "ACCEPTED") {
+    statusColor = "#00d775";
+  } else if (status === "REJECTED") {
+    statusColor = "red";
+  } else {
+    statusColor = "gray";
   }
-  
+
   const seeMoreHandler = () => {
-      setSeeMore(!seeMore);
-      
-  }
+    setSeeMore(!seeMore);
+  };
   console.log(seeMore);
   return (
     <InternshipHistoryWrapper>
       <InternshipHistoryHeader>
-        <Text type="subtitle" color="#004abf" >
-          Denumire
-        </Text>{" "}
-        <StyledMediumButton onClick={seeMoreHandler}>Vezi detalii</StyledMediumButton>
-
-        <Text type="subtitle" color={statusColor} >
+        <Text type="subtitle" color="#004abf">{internshipCompany}</Text>{" "}
+        <StyledMediumButton onClick={seeMoreHandler}>
+          Vezi detalii
+        </StyledMediumButton>
+        <Text type="subtitle" color={statusColor}>
           {internshipStatus}
         </Text>{" "}
       </InternshipHistoryHeader>
       <InternshipHistoryContent>
-          {seeMore && <HiddenInfo>
-          <Text type="text" bold="true">Pozitie</Text>
-          <Text type="text" bold="true">Descriere</Text>
-          <Text type="text" bold="true">Incepand de la</Text>
-          <Text type="text" bold="true">Durata</Text>
-          <Text type="text" bold="true">Orar</Text>
-          <Text type="text" bold="true">Cunostiinte necesare</Text>
-          </HiddenInfo>}
-          
-          
+        {seeMore && (
+          <HiddenInfo>
+            <Text type="text" bold="true">
+              {`Pozitie ${internshipPosition}`}
+            </Text>
+            <Text type="text" bold="true">
+              {`Descriere: ${internshipDescription}`}
+            </Text>
+            <Text type="text" bold="true">
+              {`Incepand cu: ${internshipStartingDate}`}
+            </Text>
+            <Text type="text" bold="true">
+           {`Durata: ${internshipDuration}`}
+            </Text>
+            <Text type="text" bold="true">
+              {`Orar: 9-15`}
+            </Text>
+            {/* <Text type="text" bold="true">
+              {`Abilitati necesare ${internshipSkills}`}
+            </Text> */}
+          </HiddenInfo>
+        )}
       </InternshipHistoryContent>
     </InternshipHistoryWrapper>
   );

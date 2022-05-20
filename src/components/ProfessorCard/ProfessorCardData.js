@@ -5,6 +5,9 @@ export const data = [
     facultyName: "FACIEE",
     companyName: "Intel",
     internship: "Front-End Developer",
+    grade: "5",
+    attendance: "6/10",
+    remark: "Slabut, slabut",
   },
   {
     id: "id4",
@@ -12,6 +15,9 @@ export const data = [
     facultyName: "FACIEE",
     companyName: "Intel",
     internship: "DB Manager",
+    grade: "2",
+    attendance: "2/10",
+    remark: "Execrabil",
   },
   {
     id: "id5",
@@ -19,15 +25,21 @@ export const data = [
     facultyName: "FACIEE",
     companyName: "Intel",
     internship: "Full-Stack Developer",
+    grade: "9",
+    attendance: "10/10",
   },
   {
     id: "id9",
     name: "Dummy Account",
     facultyName: "FACIEE",
+    grade: "10",
+    attendance: "10/10",
   },
   {
     id: "id13",
     name: "Dummy Account",
     facultyName: "FACIEE",
+    grade: "7",
+    attendance: "8/10",
   },
 ];

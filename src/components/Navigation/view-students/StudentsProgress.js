@@ -8,7 +8,7 @@ import {
 
 const StudentsProgress = () => {
   return (
-    <StyledStudentsProgressInfo to="/management-firme">
+    <StyledStudentsProgressInfo to="/gestioneaza-studentii">
       <StyledStudentsProgressIcon>
         <PeopleIcon/>
       </StyledStudentsProgressIcon>

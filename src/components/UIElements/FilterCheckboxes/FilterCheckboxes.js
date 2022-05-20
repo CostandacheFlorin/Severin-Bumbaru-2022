@@ -28,11 +28,12 @@ const FilterCheckboxes = ({ filterBy, lista, filterByType }) => {
           </Text>
         </StyledFilterHeader>
         <StyledFilterOptions>
-          <Checkbox
+          <Checkbox checked={true}
             onChange={filterBy}
             id="web development"
             name="web development"
             label="Web development"
+            
           />
           <Checkbox
             onChange={filterBy}

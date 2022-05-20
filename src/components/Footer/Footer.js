@@ -21,7 +21,7 @@ const Footer = () => {
       <StyledFooterColumn1>
         <Column1Logo>
           <Text variant="h3" type="Title" color="#fff" margin="1rem 0 0 0">
-            NUME
+            StudentHUB
           </Text>
         </Column1Logo>
         <Column1About>

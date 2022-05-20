@@ -15,19 +15,21 @@ const InternshipList = ({internships}) => {
       return (
         <StyledInternshipList>
           {internships.map((internship) => {
+            console.log(internship);
             return (
               <Internship
                 key={internship.id}
                 id={internship.id}
-                title={internship.title}
+                title={internship.theme}
                 spots={internship.spots}
-                location={internship.location}
-                company={internship.company}
-                startingDate={internship.startingDate}
+                location={internship.city}
+                company={internship.company.name}
+                startingDate={internship.startDate}
                 description={internship.description}
                 skills={internship.skills}
                 duration={internship.duration}
                 type={internship.type}
+                schedule={internship.schedule}
                 
               />
             );

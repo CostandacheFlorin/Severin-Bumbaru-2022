@@ -1,108 +1,88 @@
 import React, { useEffect, useState } from "react";
 
 import InternshipList from "../../components/Internship/InternshipList/InternshipList";
-import { StyledInternshipRequestsLayout, StyledFilteredArea } from "./InternshipRequests.styled";
+import {
+  StyledInternshipRequestsLayout,
+  StyledFilteredArea,
+} from "./InternshipRequests.styled";
 import FilterCheckboxes from "../../components/UIElements/FilterCheckboxes/FilterCheckboxes";
 import FilterByCity from "../../components/UIElements/FilterByCity/FilterByCity";
-
-
+import { useHttpClient } from "../../hooks/http-hook";
+import { StyledMediumButton } from "../../components/UIElements/Buttons/Button.styled";
 const DUMMY_INTERSHIPS = [
-  {
-    id: "id1",
-    title: "Sef baze de date",
-    description: "O sa ai grija de bazele de date si o sa le faci chestii",
-    company: "intel",
-    type: "remote",
-    location: "Galati",
-    spots: 30,
-    startingDate: "30 februarie",
-    skills: [{ skill: "java" }, { skill: "oop" }, { skill: "c+++" }],
-    duration: "90 de zile",
-  },
-  {
-    id: "id2",
-    title: "Sef baze de date",
-    description: "O sa ai grija de bazele de date si o sa le faci chestii",
-    company: "intel",
-    type: "remote",
-    location: "Galati",
-    spots: 30,
-    startingDate: "30 februarie",
-    skills: [{ skill: "java" }, { skill: "oop" }, { skill: "c+++" }],
-    duration: "90 de zile",
-  },
-  {
-    id: "id3",
-    title: "Sef baze de date",
-    description: "O sa ai grija de bazele de date si o sa le faci chestii",
-    company: "intel",
-    type: "remote",
-    location: "Galati",
-    spots: 30,
-    startingDate: "30 februarie",
-    skills: [{ skill: "java" }, { skill: "oop" }, { skill: "c+++" }],
-    duration: "90 de zile",
-  },
-  {
-    id: "id4",
-    title: "Sef baze de date",
-    description: "O sa ai grija de bazele de date si o sa le faci chestii",
-    company: "intel",
-    type: "remote",
-    location: "Galati",
-    spots: 30,
-    startingDate: "30 februarie",
-    skills: [{ skill: "java" }, { skill: "oop" }, { skill: "c+++" }],
-    duration: "90 de zile",
-  },
+  // {
+  //   id: "id1",
+  //   title: "Sef baze de date",
+  //   description: "O sa ai grija de bazele de date si o sa le faci chestii",
+  //   company: "intel",
+  //   type: "remote",
+  //   location: "Galati",
+  //   spots: 30,
+  //   startingDate: "30 februarie",
+  //   skills: ['java', 'ruby'],
+  //   duration: "90 de zile",
+  //   schedule: "8-16",
+  // },
+  
 ];
 
 const InternshipRequests = () => {
   let interese3 = [{}];
-  const [interese, setInterese] = useState([]);
-  const [internships, setInternships] = useState([]);
-  const [types, setTypes] = useState([]);
-  
-  // const [isChecked, setIsChecked] = useState(true);
-  
-  useEffect( () => {
-    setInternships(DUMMY_INTERSHIPS);
-  }, [internships]);
+  const [interese, setInterese] = useState(['test']);
+  const [internships, setInternships] = useState(DUMMY_INTERSHIPS);
+  const [types, setTypes] = useState(['test']);
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
-  // console.log(internships);
+  // const [isChecked, setIsChecked] = useState(true);
 
  
 
-  const filterBy = (event) => {
+  const onClickHandler = async () => {
+    try {
+        
+      const responseData = await sendRequest(
+        `http://10.13.16.154:8080/getInternships`,
+        "POST",JSON.stringify({
+          type: types ,
+          domain: interese
+        }),
+        {
+          "Content-Type": "application/json",
+        }
+      );
 
-   
+      console.log(responseData);
+      setInternships(responseData);
+    } catch (err) {}
+  }
+
+
+
+  // console.log(internships);
+
+  const filterBy = (event) => {
     // console.log(event.target.value);
 
-    if(interese.includes(event.target.value)) {
-      const filteredInterese = interese.filter(interes => interes !== event.target.value);
+    if (interese.includes(event.target.value)) {
+      const filteredInterese = interese.filter(
+        (interes) => interes !== event.target.value
+      );
 
       setInterese(filteredInterese);
-      
     } else {
-    setInterese([...interese, event.target.value]);
+      setInterese([...interese, event.target.value]);
     }
-    
-    
-  }
+  };
 
   const filterByType = (event) => {
-    if(interese.includes(event.target.value)) {
-      const filteredTypes = types.filter(type => type !== event.target.value);
+    if (interese.includes(event.target.value)) {
+      const filteredTypes = types.filter((type) => type !== event.target.value);
 
       setTypes(filteredTypes);
-      
     } else {
-    setTypes([...types, event.target.value]);
+      setTypes([...types, event.target.value]);
     }
-  }
-  
-
-
+  };
 
   console.log(interese);
   console.log(types);
@@ -114,8 +94,9 @@ const InternshipRequests = () => {
   return (
     <StyledInternshipRequestsLayout>
       <StyledFilteredArea>
-        <FilterCheckboxes  filterByType={filterByType} filterBy={filterBy} />
-        <FilterByCity/>
+        <FilterCheckboxes filterByType={filterByType} filterBy={filterBy} />
+        {/* <FilterByCity /> */}
+        <StyledMediumButton style={{marginLeft: "2.5rem"}} onClick={onClickHandler}>Filtrare</StyledMediumButton>
       </StyledFilteredArea>
 
       <InternshipList internships={internships} />

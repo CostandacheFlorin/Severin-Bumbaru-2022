@@ -5,7 +5,7 @@ import { StyledLogo } from "./Logo.styled";
 const Logo = () => {
    return  <StyledLogo>
         <Link to="/"> 
-        <h2>TITLU</h2>
+        <h2>StudentHUB</h2>
         </Link> 
       </StyledLogo>
 }

@@ -15,6 +15,9 @@ const ProfessorCard = () => {
             facultyName={el.facultyName}
             companyName={el.companyName}
             internship={el.internship}
+            grade={el.grade}
+            attendance={el.attendance}
+            remark={el.remark}
           />
         ))}
       </RCWrapper>
