@@ -6,18 +6,18 @@ import {
   StyledInternshipRequestsInfo,
 } from "./InternshipRequests.styled";
 
-const InternshipRequests = () => {
+const MyInternships = () => {
   return (
-    <StyledInternshipRequestsInfo to="/gestionare-aplicanti">
+    <StyledInternshipRequestsInfo to="/stagiile-mele">
       <StyledInternshipRequestsIcon>
       <NewReleasesIcon />
       </StyledInternshipRequestsIcon>
       <StyledNavText variant="h3" type="text" align="center">
        
-        Cereri noi 
+        Stagiile mele
       </StyledNavText>
     </StyledInternshipRequestsInfo>
   );
 };
 
-export default InternshipRequests;
+export default MyInternships;

@@ -25,6 +25,13 @@ import BusinessProfile from "./components/Profile/BusinessProfile/BusinessProfil
 import BusinessProfilePage from "./pages/BusinessProfilePage/BusinessProfilePage";
 import InternshipHistory from "./components/Internship/InternshipHistory/InternshipHistory";
 import RequestCard from "./components/Tutor/RequestCard/RequestCard";
+import InternshipHistoryList from "./components/Internship/InternshipHistoryList/InternshipHistoryList";
+import MyInternships from "./pages/MyInternships/MyInternships";
+import ReportCard from "./components/ReportCard/ReportCard";
+import ProfessorCard from "./components/ProfessorCard/ProfessorCard";
+import Applicants from "./components/Applicants/Applicants";
+import ApplicantsList from "./pages/ApplicantsList/ApplicantsList";
+import ApplicantsPage from "./pages/ApplicantsList/ApplicantsPage";
 function App() {
   const { permission, login, logout, userId } = useAuth();
   const auth = useContext(AuthContext);
@@ -96,17 +103,24 @@ function App() {
           <Route path="/gestionare-firme" exact>
             <ManageBusinesses />
           </Route>
-          <Route path="/test" exact>
-            <InternshipHistory internshipStatus="acceptat" />
-            <InternshipHistory internshipStatus="refuzat" />
-            <InternshipHistory internshipStatus="in asteptare" />
-            <InternshipHistory internshipStatus="acceptat" />
-            <InternshipHistory internshipStatus="refuzat" />
-            <InternshipHistory internshipStatus="in asteptare" />
+          <Route path="/stagiile-mele" exact>
+            <MyInternships />
           </Route>
 
-          <Route path="/test2" exact>
-            <RequestCard/>
+          <Route path="/tutore" exact>
+            <RequestCard />
+          </Route>
+
+          <Route path="/caiet-practica" exact>
+            <ReportCard />
+          </Route>
+
+          <Route path="/gestionare-aplicanti" exact>
+            <ApplicantsPage />
+          </Route>
+
+          <Route path="/gestioneaza-studentii" exact>
+            <ProfessorCard />
           </Route>
 
           <Redirect to="/" />

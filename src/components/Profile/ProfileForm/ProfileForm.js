@@ -10,6 +10,7 @@ import { AuthContext } from "../../../context/auth-context";
 import { useHistory } from "react-router-dom";
 import { StyledInputContainer } from "../../UIElements/Input/Input.styled";
 
+
 const ProfileForm = () => {
   const history = useHistory();
   let skillsArray = [];
@@ -56,8 +57,6 @@ const ProfileForm = () => {
         }
         setSkills(skillsArray);
 
-        
-
         console.log(skills);
       } catch (err) {}
     };
@@ -89,7 +88,33 @@ const ProfileForm = () => {
     let data = [...formFields];
     data[index][event.target.name] = event.target.value;
     setFormFields(data);
-    
+  };
+
+  const submitPicture = async (event) => {
+    event.preventDefault();
+    const uid = auth.userId;
+    console.log(event.target.image.files[0]);
+    const formData = new FormData();
+    formData.append("file", event.target.image.files[0]);
+    formData.append("id", uid);
+    console.log(event.target.image.files[0]);
+    console.log(formData.get("file"));
+    const cevaa = formData.get("file");
+    console.log(cevaa);
+    try {
+      await sendRequest(
+        "http://10.13.16.154:8080/uploadFile",
+        "POST",
+       formData,
+        {
+          "Content-Type": "multipart/form-data;boundary=50000",
+          "type": "formData"
+        },
+        
+      );
+
+      // history.push("/profil");
+    } catch (err) {}
   };
 
   const submitHandler = async (event) => {
@@ -118,7 +143,6 @@ const ProfileForm = () => {
     setTeacher(event.target.nume.value);
     setAddress(event.target.adresa.value);
     const tel = event.target.telefon.value;
-   
 
     //  setTeacherId(responseData.professor.id);
 
@@ -177,88 +201,85 @@ const ProfileForm = () => {
         </Text>
         <StyledInputContainer>
           <label htmlFor="nume">Nume</label>
-          <input 
-          style={{width:"20rem"}}
-          type="text"
-          name="nume"
-          id="nume"
-          value={firstname}
-          onChange={(e) => setFirstname(e.target.value)}
-        />
+          <input
+            style={{ width: "20rem" }}
+            type="text"
+            name="nume"
+            id="nume"
+            value={firstname}
+            onChange={(e) => setFirstname(e.target.value)}
+          />
         </StyledInputContainer>
-         <StyledInputContainer>
+        <StyledInputContainer>
           <label htmlFor="prenume">Prenume</label>
-          <input 
-          style={{width:"20rem"}}
-          type="text"
-          name="prenume"
-          id="prenume"
-          value={lastname}
-          onChange={(e) => setLastname(e.target.value)}
-        />
+          <input
+            style={{ width: "20rem" }}
+            type="text"
+            name="prenume"
+            id="prenume"
+            value={lastname}
+            onChange={(e) => setLastname(e.target.value)}
+          />
         </StyledInputContainer>
-         <StyledInputContainer>
+        <StyledInputContainer>
           <label htmlFor="email">Email</label>
-          <input style={{width:"20rem"}}
-          type="email"
-          name="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+          <input
+            style={{ width: "20rem" }}
+            type="email"
+            name="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </StyledInputContainer>
 
         <StyledInputContainer>
           <label htmlFor="telefon">Telefon</label>
           <input
-          style={{width:"20rem"}}
-          type="text"
-          name="telefon"
-          id="telefon"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-        />
+            style={{ width: "20rem" }}
+            type="text"
+            name="telefon"
+            id="telefon"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+          />
         </StyledInputContainer>
-
 
         <StyledInputContainer>
           <label htmlFor="adresa">Adresa</label>
           <input
-          style={{width:"20rem"}}
-          type="address"
-          name="adresa"
-          id="adresa"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-        />
+            style={{ width: "20rem" }}
+            type="address"
+            name="adresa"
+            id="adresa"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+          />
         </StyledInputContainer>
 
         <StyledInputContainer>
           <label htmlFor="facultate">Facultate</label>
           <input
-          style={{width:"20rem"}}
-          type="text"
-          name="facultate"
-          id="facultate"
-          value={school}
-          onChange={(e) => setSchool(e.target.value)}
-        />
+            style={{ width: "20rem" }}
+            type="text"
+            name="facultate"
+            id="facultate"
+            value={school}
+            onChange={(e) => setSchool(e.target.value)}
+          />
         </StyledInputContainer>
-
 
         <StyledInputContainer>
           <label htmlFor="teacher">Profesor</label>
           <input
-          style={{width:"20rem"}}
-          type="text"
-          name="profesor"
-          id="profesor"
-          value={teacher}
-          onChange={(e) => setTeacher(e.target.value)}
-        />
+            style={{ width: "20rem" }}
+            type="text"
+            name="profesor"
+            id="profesor"
+            value={teacher}
+            onChange={(e) => setTeacher(e.target.value)}
+          />
         </StyledInputContainer>
-      
-        
 
         <div>
           <Text type="text" bold="true">
@@ -296,6 +317,14 @@ const ProfileForm = () => {
 
         <h3 onClick={addFields}>Adauga abilitate..</h3>
 
+
+        <StyledMediumButton>Modifica datele</StyledMediumButton>
+      </StyledFormContainer>
+
+      <StyledFormContainer
+        onSubmit={submitPicture}
+        enctype="multipart/form-data"
+      >
         <ImageUpload id="image" name="image" />
 
         <StyledMediumButton>Modifica datele</StyledMediumButton>

@@ -12,6 +12,7 @@ import StudentsProgress from "../view-students/StudentsProgress";
 import InternshipRequests from "../new-internship-requests/InternshipRequests";
 import ManageGuardians from "../internship-guardian/ManageGuardians";
 import { AuthContext } from "../../../context/auth-context";
+import MyInternships from "../my-internship/MyInternships";
 
 const MainNavigation = (props) => {
   const auth = useContext(AuthContext);
@@ -52,6 +53,7 @@ const MainNavigation = (props) => {
       <>
         <InternshipReport />
         <SearchInternship />
+        <MyInternships />
       </>
     );
   }
