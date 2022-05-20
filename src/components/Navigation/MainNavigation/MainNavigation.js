@@ -37,7 +37,7 @@ const MainNavigation = (props) => {
   }
 
   if (permission === "TUTOR") {
-    navButtons = <></>;
+    navButtons = <><ManageUsers /></>;
   }
 
   if (permission === "COMPANY") {

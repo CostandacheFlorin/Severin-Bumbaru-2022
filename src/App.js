@@ -123,6 +123,8 @@ function App() {
             <ProfessorCard />
           </Route>
 
+         
+
           <Redirect to="/" />
         </Switch>
 

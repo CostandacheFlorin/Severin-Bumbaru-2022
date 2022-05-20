@@ -8,7 +8,7 @@ import {
 
 const ManageUsers = () => {
   return (
-    <StyledManageUsersInfo to="/gestionare-utilizatori">
+    <StyledManageUsersInfo to="/tutore">
       <StyledManageUsersIcon>
       <AccountCircleIcon />
       </StyledManageUsersIcon>
